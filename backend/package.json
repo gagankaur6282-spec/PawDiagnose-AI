@@ -6,7 +6,7 @@
   "description": "Backend server with Google Gemini integration",
   "scripts": {
     "dev": "node --watch src/server.js",
-    "start": "node server.js"
+    "start": "node src/server.js"
   },
   "engines": {
     "node": ">=18.0.0"
