@@ -44,6 +44,12 @@ app.use("/api/chat", chatRoutes);
 app.use("/api/dogs", dogsRoutes);
 app.use("/api/favorites", favoritesRoutes);
 app.use("/api/vets", vetsRoutes);
+app.get("/", (req, res) => {
+  res.json({
+    message: "PawDiagnose AI Backend is running",
+    status: "OK"
+  });
+});
 
 // 404 handler
 app.use("/api", (req, res) => {
