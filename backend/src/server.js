@@ -76,6 +76,25 @@ app.get("/api/models", async (req, res) => {
     });
   }
 });
+app.get("/api/models", async (req, res) => {
+  try {
+    const { GoogleGenAI } = await import("@google/genai");
+
+    const ai = new GoogleGenAI({
+      apiKey: process.env.GEMINI_API_KEY,
+    });
+
+    const models = await ai.models.list();
+
+    res.json(models);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      error: e.message,
+      details: e,
+    });
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 
