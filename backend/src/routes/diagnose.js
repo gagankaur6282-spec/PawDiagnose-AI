@@ -139,5 +139,20 @@ router.delete("/history", requireAuth, (req, res) => {
   writeDb(db);
   res.json({ ok: true });
 });
+function extractJson(text) {
+  try {
+    return JSON.parse(text);
+  } catch {
+    const match = text.match(/\{[\s\S]*\}/);
+
+    if (!match) return null;
+
+    try {
+      return JSON.parse(match[0]);
+    } catch {
+      return null;
+    }
+  }
+}
 
 export default router;
